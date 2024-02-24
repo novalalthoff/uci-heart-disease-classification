@@ -6,15 +6,15 @@ import time
 import pickle
 
 # Load prepared csv as dataframe to get min & max value of each attributes
-df = pd.read_csv(r"csv\\cleveland.csv")
+df = pd.read_csv("csv\\cleveland.csv")
 
 # Load test set
-df_test = pd.read_csv(r"csv\\test_resampled_scaled_cleveland.csv")
+df_test = pd.read_csv("csv\\test_resampled_scaled_cleveland.csv")
 X_test = df_test.drop("target", axis=1)
 y_test = df_test['target']
 
 # Load scaler
-with open(r"scalers\\scaler_minmax.pkl", 'rb') as file:
+with open("scalers\\scaler_minmax.pkl", 'rb') as file:
   scaler = pickle.load(file)
 
 # Load trained models
@@ -26,7 +26,7 @@ models = {
   'title_acc': []
 }
 
-with open(r"models\\models.txt", "r") as file:
+with open("models\\models.txt", "r") as file:
   models_read = file.readlines()
 
 for i in range(len(models_read)):
@@ -34,7 +34,7 @@ for i in range(len(models_read)):
   models['file'].append(models_read[i].strip().split(',')[1])
 
 for item in models['file']:
-  with open(fr"models\\{item}", 'rb') as file:
+  with open(f"models\\{item}", 'rb') as file:
     models['data'].append(pickle.load(file))
 
 for i in range(len(models['data'])):
