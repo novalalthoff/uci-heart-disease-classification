@@ -6,7 +6,7 @@ import time
 import pickle
 
 # Load prepared csv as dataframe to get min & max value of each attributes
-df = pd.read_csv(r"csv/cleveland.csv")
+df = pd.read_csv(r"app/csv/cleveland.csv")
 
 # Load test set
 df_test = pd.read_csv(r"csv/test_resampled_scaled_cleveland.csv")
